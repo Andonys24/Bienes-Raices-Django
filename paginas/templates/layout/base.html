@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Bienes Raices | {% block titulo %}{{titulo}}{% endblock titulo %}</title>
+		<link rel="stylesheet" href="{% static "css/app.css" %}">
+	</head>
+	<body>
+		<header class="header">
+			<div class="contenedor contenido-header">
+				<div class="barra">
+					<a href="/"> <img src="{% static "img/logo.svg" %}" alt="Logotipo de Bienes Raices"></a>
+					{% comment %}
+					<div class="mobile-menu"><img src="{% static "img/barras.svg" %}" alt="icono menu responsive"></div>
+					{% endcomment %}
+
+					<div class="derecha">
+						{% comment %} <img class="dark-mode-boton" src="{% static "img/dark-mode.svg" %}"> {% endcomment %}
+						{% include "layout/navegacion.html" %}
+					</div>
+					{% if titulo == 'Inicio' %}
+						<h1>Venta de Casas y Departamentos Exclusivos de lujo</h1>
+					{% endif %}
+				</div>
+			</div>
+		</header>
+
+		{% block contenido %}{% endblock contenido %}
+
+		<footer class="footer seccion">
+			<div class="contenedor contenedor-footer">{% include "layout/navegacion.html" %}</div>
+			<p class="copyright">Todos los derechos Reservados {% now "Y" %} &copy;</p>
+		</footer>
+	</body>
+</html>
