@@ -1,0 +1,21 @@
+{% extends "layout/base.html" %}
+
+{% block contenido %}
+<main class="contenedor seccion contenido-centrado">
+    <h2>{{titulo}}</h2>
+<picture>
+    {% load static %}
+    <source srcset="{% static "img/destacada2.avif" %}" type="image/avif">
+    <source srcset="{% static "img/destacada2.webp" %}" type="image/webp">
+    <source srcset="{% static "img/destacada2.jpg" %}" type="image/jpg">
+    <img loading="lazy" src="{% static "img/destacada2.jpg" %}" alt="Imagen destacada">
+</picture>
+<p class="informacion-meta">Escrito el: <span>30/09/2024</span> por: <span>Admin</span></p>
+<div class="resumen-propiedad">
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo magnam blanditiis velit reprehenderit error sint accusantium, nemo perspiciatis officia! Sapiente officia exercitationem veniam nobis, ducimus incidunt sint maiores nihil delectus.
+    Praesentium ullam maxime possimus iusto deleniti consectetur, quam necessitatibus? Tenetur eos non accusamus velit magni quibusdam minus cupiditate aliquid, natus ea quas officiis recusandae illum autem. Porro iste sequi aperiam.
+    </p>
+</div>
+</main>
+{% endblock contenido %}

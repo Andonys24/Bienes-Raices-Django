@@ -1,0 +1,14 @@
+.boton {
+	&--amarillo {
+		@include boton($amarillo);
+	}
+	&--verde {
+		@include boton($verde);
+	}
+	&--amarillo,
+	&--verde {
+		&.block {
+			display: block;
+		}
+	}
+}

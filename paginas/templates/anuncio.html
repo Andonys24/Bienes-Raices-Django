@@ -1,0 +1,21 @@
+{% extends "layout/base.html" %}
+
+{% block contenido %}
+<main class="contenedor seccion contenido-centrado">
+    <h1>{{titulo}}</h1>
+<picture>
+    {% load static %}
+    <source srcset="{% static "img/destacada.avif" %}" type="image/avif">
+    <source srcset="{% static "img/destacada.webp" %}" type="image/webp">
+    <source srcset="{% static "img/destacada.jpg" %}" type="image/jpg">
+    <img loading="lazy" src="{% static "img/destacada.jpg" %}" alt="Imagen destacada">
+</picture>
+<div class="resumen-propiedad">
+    {% include "layout/contenido-anuncio.html" %}
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo magnam blanditiis velit reprehenderit error sint accusantium, nemo perspiciatis officia! Sapiente officia exercitationem veniam nobis, ducimus incidunt sint maiores nihil delectus.
+    Praesentium ullam maxime possimus iusto deleniti consectetur, quam necessitatibus? Tenetur eos non accusamus velit magni quibusdam minus cupiditate aliquid, natus ea quas officiis recusandae illum autem. Porro iste sequi aperiam.
+    </p>
+</div>
+</main>
+{% endblock contenido %}

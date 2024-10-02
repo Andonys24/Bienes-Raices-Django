@@ -1,0 +1,29 @@
+{% extends "layout/base.html" %} {% block contenido %}
+<main class="contenedor seccion">
+    <h1>Conoce sobre {{titulo}}</h1>
+    <div class="contenido-nosotros">
+        <div class="imagen">
+            <picture>
+                {% load static %}
+                <source srcset="{% static "img/nosotros.avif" %}" type="image/avif">
+                <source srcset="{% static "img/nosotros.webp" %}" type="image/webp">
+                <source srcset="{% static "img/nosotros.jpg" %}" type="image/jpeg">
+                <img loading="lazy" src="{% static "img/nosotros.jpg" %}" alt="Sobre Nosotros">
+            </picture>
+	    </div>
+        <div class="texto-nosotros">
+            <blockquote>
+                Experiencia en el Mercado Inmobiliario
+            </blockquote>
+
+            <p>Somos un equipo con una sólida trayectoria en el mercado inmobiliario, con más de dos décadas de experiencia en la compra, venta y alquiler de propiedades. Nos enorgullece ofrecer un servicio profesional y personalizado, brindando asesoramiento experto para ayudar a nuestros clientes a alcanzar sus objetivos en el mercado de bienes raíces.</p>
+
+            <p>Nuestro compromiso con la excelencia y la integridad nos distingue en el sector. Nos esforzamos por entender las necesidades individuales de cada cliente y proporcionar soluciones que se adapten a sus circunstancias específicas. Ya sea que estés buscando tu primer hogar, una inversión lucrativa o una propiedad de lujo, estamos aquí para ayudarte en cada paso del camino.</p>
+        </div>
+    </div>
+</main>
+
+<section class="contenedor seccion">
+    {% include "layout/iconos.html" %}
+</section>
+{% endblock contenido %}

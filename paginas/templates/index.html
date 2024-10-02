@@ -1,5 +1,54 @@
-{% extends "layout/base.html" %}
+{% extends "layout/base.html" %} {% block contenido %}
+<h2>Mas Sobre Nosotros</h2>
+<main class="contenedor seccion">
+    {% include "layout/iconos.html" %}
+</main>
+<section class="seccion contenedor">
+	<h1>Casas y Depas en Venta</h1>
+	<div class="contenedor-anuncios">
+        {% for i in "012" %}
+            <div class="card">
+                <picture>
+                    {% load static %}
+                    <source srcset="{% static "img/anuncio" %}{{ forloop.counter }}.avif" type="image/avif">
+                    <source srcset="{% static "img/anuncio" %}{{ forloop.counter }}.webp" type="image/webp">
+                    <source srcset="{% static "img/anuncio" %}{{ forloop.counter }}.jpg" type="image/jpeg"> 
+                    <img loading="lazy" src="{% static "img/anuncio" %}{{ forloop.counter }}.jpg" alt="anuncio">
+                </picture>
+                <div class="contenido-anuncio">
+                    <h3>Casa de Lujo en el Lago</h3>
+                    <p>Casa de lujo en el lago con excelente vista, acabados de lujo a un excelente precio</p>
+                    {% include "layout/contenido-anuncio.html" %}
+                    <a href="#" class="boton boton--amarillo block">Ver Propiedad</a>
+                </div>
+            </div>
+        {% endfor %}
+	</div>
+    <div class="alinear-derecha">
+        <a href="{% url "anuncios" %}" class="boton--verde">Ver todas</a>
+    </div>
+</section>
 
-{% block contenido %}
-<h2>Titulo de la pagina</h2>
+<section class="imagen-contacto">
+    <h2>Encuentra la casa de tus sueños</h2>
+    <p>Llena el formulario de contacto y un asesor se pondra en contacto contigo a la brevedad</p>
+    <a href="{% url "contacto" %}" class="boton--amarillo block">Contactanos</a>
+</section>
+
+<div class="contenedor seccion seccion-inferior">
+    <section class="blog">
+        <h3>Nuestro Blog</h3>
+        {% include "layout/contenido-blog.html" %}
+    </section>
+
+    <section class="textimoniales">
+        <h3>Testimoniales</h3>
+        <div class="testimonial">
+            <blockquote>
+                El personal se comporto de una excelente forma, muy buena atencion y la casa que me ofrecieron cumple con todas mis espectativas
+            </blockquote>
+            <p>- Andoni Hernandez</p>
+        </div>
+    </section>
+</div>
 {% endblock contenido %}

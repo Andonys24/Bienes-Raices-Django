@@ -1,0 +1,79 @@
+<article class="entrada-blog">
+    <div class="imagen">
+        {% load static %}
+        <picture>
+            <source srcset="{% static "img/blog1.avif" %}" type="image/avif">
+            <source srcset="{% static "img/blog1.webp" %}" type="image/webp">
+            <source srcset="{% static "img/blog1.jpg" %}" type="image/jpeg"> 
+            <img loading="lazy" src="{% static "img/blog1.jpg" %}" alt="blog">
+        </picture>
+    </div>
+    <div class="texto-entrada">
+        <a href="{% url "blog" %}">
+            <h4>Terraza en el techo de tu casa</h4>
+        </a>
+        <p class="informacion-meta">Escrito el: <span>30/09/2024</span> por: <span>Admin</span></p>
+        <p>
+            Consejos para construir una terraza en el techo de tu casa con los mejores materiales y ahorrando dinero
+        </p>
+    </div>
+</article>
+<article class="entrada-blog">
+    <div class="imagen">
+        <picture>
+            <source srcset="{% static "img/blog2.avif" %}" type="image/avif">
+            <source srcset="{% static "img/blog2.webp" %}" type="image/webp">
+            <source srcset="{% static "img/blog2.jpg" %}" type="image/jpeg"> 
+            <img loading="lazy" src="{% static "img/blog2.jpg" %}" alt="blog">
+        </picture>
+    </div>
+    <div class="texto-entrada">
+        <a href="{% url "blog" %}">
+            <h4>Guia para la decoracion de tu hogar</h4>
+        </a>
+        <p class="informacion-meta">Escrito el: <span>30/09/2024</span> por: <span>Admin</span></p>
+        <p>
+            Maximiza el espacio en tu hogar con esta guia,
+            aprende a combinar muebles y colores para darle vida a tu espacio
+        </p>
+    </div>
+</article>
+<article class="entrada-blog">
+    <div class="imagen">
+        <picture>
+            <source srcset="{% static "img/blog3.avif" %}" type="image/avif">
+            <source srcset="{% static "img/blog3.webp" %}" type="image/webp">
+            <source srcset="{% static "img/blog3.jpg" %}" type="image/jpeg"> 
+            <img loading="lazy" src="{% static "img/blog3.jpg" %}" alt="blog">
+        </picture>
+    </div>
+    <div class="texto-entrada">
+        <a href="{% url "blog" %}">
+            <h4>Guia para la decoracion de tu hogar</h4>
+        </a>
+        <p class="informacion-meta">Escrito el: <span>30/09/2024</span> por: <span>Admin</span></p>
+        <p>
+            Maximiza el espacio en tu hogar con esta guia,
+            aprende a combinar muebles y colores para darle vida a tu espacio
+        </p>
+    </div>
+</article>
+<article class="entrada-blog">
+    <div class="imagen">
+        <picture>
+            <source srcset="{% static "img/blog4.avif" %}" type="image/avif">
+            <source srcset="{% static "img/blog4.webp" %}" type="image/webp">
+            <source srcset="{% static "img/blog4.jpg" %}" type="image/jpeg">
+            <img loading="lazy" src="{% static "img/blog4.jpg" %}" alt="blog">
+        </picture>
+    </div>
+    <div class="texto-entrada">
+        <a href="{% url "blog" %}">
+            <h4>Guia para la decoracion de tu hogar</h4>
+        </a>
+        <p class="informacion-meta">Escrito el: <span>30/09/2024</span> por: <span>Admin</span></p>
+        <p>
+            Maximiza el espacio en tu hogar con esta guia,
+            aprende a combinar muebles y colores para darle vida a tu espacio
+        </p>
+</article>
