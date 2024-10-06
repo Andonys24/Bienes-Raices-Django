@@ -5,10 +5,19 @@
 	&--verde {
 		@include boton($verde);
 	}
+	&--rojo {
+		@include boton($rojo);
+	}
 	&--amarillo,
-	&--verde {
+	&--verde,
+	&--rojo {
 		&.block {
 			display: block;
 		}
+	}
+
+	&--rojo.block {
+		width: 100%;
+		padding: 1.5rem 0;
 	}
 }

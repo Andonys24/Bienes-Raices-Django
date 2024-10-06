@@ -1,6 +1,6 @@
 <nav class="navegacion">
-	<a href="{% url "nosotros" %}">Nosotros</a>
-	<a href="{% url "anuncios" %}">Anuncios</a>
-	<a href="{% url "blog" %}">Blog</a>
-	<a href="{% url "contacto" %}">Contacto</a>
+	<a href="{% url "nosotros" %}" class="{% if titulo == 'Nosotros' %}activo{% endif %}">Nosotros</a>
+	<a href="{% url "anuncios" %}" class="{% if titulo == 'Anuncios' %}activo{% endif %}">Anuncios</a>
+	<a href="{% url "blog" %}" class="{% if titulo == 'Nuestro Blog' %}activo{% endif %}">Blog</a>
+	<a href="{% url "contacto" %}" class="{% if titulo == 'Contacto' %}activo{% endif %}">Contacto</a>
 </nav>

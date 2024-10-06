@@ -1,0 +1,17 @@
+{% csrf_token %} {% include "layouts/alertas.html" %}
+<fieldset>
+	<legend>Informacion General</legend>
+	{% for field in formulario %}
+	<label for="{{field.id_for_label}}">{{field.label}}</label>
+	{% if field.field.widget.input_type == 'file' and field.value %}
+	<a href="{{field.value.url}}" target="_blank">
+		<img src="{{field.value.url}}" alt="{{field.label}}" class="imagen-small" />
+	</a>
+	<input
+		type="{{field.field.widget.input_type}}"
+		name="{{field.name}}"
+		id="{{field.field.widget.attrs.id}}"
+		accept="{{field.field.widget.attrs.accept}}"
+	/>
+	{% else %} {{field}} {% endif %} {% endfor %}
+</fieldset>

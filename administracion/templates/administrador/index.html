@@ -1,0 +1,41 @@
+{% extends "layout/base.html" %}
+
+{% block contenido %}
+<main class="contenedor seccion">
+    <h1>{{titulo}}</h1>
+    {% include "layouts/mensajes.html" %}
+    <a href="{% url "crear_propiedad" %}" class="boton boton--verde">Crear Propiedad</a>
+
+    <table class="propiedades">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Titulo</th>
+                <th>Imagen</th>
+                <th>Precio</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% load humanize %}
+            {% for propiedad in propiedades %}
+                <tr>
+                    <td>{{propiedad.id}}</td>
+                    <td>{{propiedad.titulo}}</td>
+                    <td><img src="{{propiedad.imagen.url}}" class="imagen-tabla" alt="{{propiedad.titulo}}"></td>
+                    <td>L {{ propiedad.precio | intcomma }}</td>
+                    <td>
+                        <form action="{% url "eliminar_propiedad" %}" method="post" class="w-100">
+                            {% csrf_token %}
+                            <input type="hidden" name="id" value="{{propiedad.id}}">
+                            <input type="submit" class="boton boton--rojo block" value="Eliminar"></input>
+                        </form>
+                        <a href="{% url "editar_propiedad" propiedad.id %}" class="boton boton--amarillo block">Actualizar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+
+{% endblock contenido %}

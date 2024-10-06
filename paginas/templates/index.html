@@ -6,20 +6,14 @@
 <section class="seccion contenedor">
 	<h1>Casas y Depas en Venta</h1>
 	<div class="contenedor-anuncios">
-        {% for i in "012" %}
+        {% for propiedad in propiedades %}
             <div class="card">
-                <picture>
-                    {% load static %}
-                    <source srcset="{% static "img/anuncio" %}{{ forloop.counter }}.avif" type="image/avif">
-                    <source srcset="{% static "img/anuncio" %}{{ forloop.counter }}.webp" type="image/webp">
-                    <source srcset="{% static "img/anuncio" %}{{ forloop.counter }}.jpg" type="image/jpeg"> 
-                    <img loading="lazy" src="{% static "img/anuncio" %}{{ forloop.counter }}.jpg" alt="anuncio">
-                </picture>
+                <img src="{{propiedad.imagen.url}}" alt="propiedad.titulo">
                 <div class="contenido-anuncio">
-                    <h3>Casa de Lujo en el Lago</h3>
-                    <p>Casa de lujo en el lago con excelente vista, acabados de lujo a un excelente precio</p>
+                    <h3>{{propiedad.titulo}}</h3>
+                    <p>{{propiedad.descripcion}}</p>
                     {% include "layout/contenido-anuncio.html" %}
-                    <a href="#" class="boton boton--amarillo block">Ver Propiedad</a>
+                    <a href="{% url "anuncio" propiedad.id %}" class="boton boton--amarillo block">Ver Propiedad</a>
                 </div>
             </div>
         {% endfor %}

@@ -17,8 +17,20 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from paginas.views import pagina_404
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("paginas.urls")),
+    path("administracion/", include("administracion.urls")),
 ]
+
+# Ruta de las imagenes
+if settings.DEBUG:
+    from django.conf.urls.static import static
+
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Pagina no encontrada
+handler404 = pagina_404

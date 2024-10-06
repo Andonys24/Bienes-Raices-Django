@@ -64,7 +64,8 @@
 			font-size: 1.8rem;
 		}
 
-		&:hover {
+		&:hover,
+		&.activo {
 			color: $verde;
 			scale: 1.1;
 		}
