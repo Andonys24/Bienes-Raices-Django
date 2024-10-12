@@ -11,7 +11,9 @@
 		<header class="header{% if titulo == 'Inicio' %} inicio{% endif %}">
 			<div class="contenedor contenido-header">
 				<div class="barra">
-					<a href="{% url "inicio" %}"> <img src="{% static "img/logo.svg" %}" alt="Logotipo de Bienes Raices"></a>
+					<a href="{% url "inicio" %}">
+						<img src="{% static "img/logo.svg" %}" alt="Logotipo de Bienes Raices">
+					</a>
 					<div class="mobile-menu">
 						<img src="{% static "img/barras.svg" %}" alt="icono menu responsive">
 					</div>

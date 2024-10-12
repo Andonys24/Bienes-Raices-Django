@@ -3,4 +3,7 @@
 	<a href="{% url "anuncios" %}" class="{% if titulo == 'Anuncios' %}activo{% endif %}">Anuncios</a>
 	<a href="{% url "blog" %}" class="{% if titulo == 'Nuestro Blog' %}activo{% endif %}">Blog</a>
 	<a href="{% url "contacto" %}" class="{% if titulo == 'Contacto' %}activo{% endif %}">Contacto</a>
+	{% if user.is_authenticated %}
+		<a href="{% url 'logout' %}">Cerrar Sesión</a>
+	{% endif %}
 </nav>

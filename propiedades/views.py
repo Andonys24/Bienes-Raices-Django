@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from .models import Propiedad
 from vendedores.models import Vendedor
 from .forms import PropiedadForm
 
 
 # Create your views here.
+@login_required(login_url="login")
 def crear(request):
     vendedores = Vendedor.objects.all()
     if request.method == "POST":
@@ -38,6 +40,7 @@ def crear(request):
     )
 
 
+@login_required(login_url="login")
 def editar(request, id):
     if id is None or type(id) != int:
         return redirect("administracion")
@@ -78,22 +81,25 @@ def editar(request, id):
     )
 
 
+@login_required(login_url="login")
 def eliminar(request):
     if request.method == "POST":
         try:
             id = int(request.POST.get("id"))
             propiedad = Propiedad.objects.get(pk=id)
         except ValueError:
-            messages.error(
-                request, "ID de propiedad no válido", extra_tags="error"
-            )
+            messages.error(request, "ID de propiedad no válido", extra_tags="error")
         except TypeError:
             messages.error(
-                request, "Tipo de dato incorrecto para el ID de propiedad", extra_tags="error"
+                request,
+                "Tipo de dato incorrecto para el ID de propiedad",
+                extra_tags="error",
             )
         except Propiedad.DoesNotExist:
             messages.error(
-                request, "La propiedad con el ID proporcionado no existe", extra_tags="error"
+                request,
+                "La propiedad con el ID proporcionado no existe",
+                extra_tags="error",
             )
         else:
             # propiedad.delete()
@@ -103,5 +109,9 @@ def eliminar(request):
             )
         return redirect("administracion")
     else:
-        messages.error(request, "Método de solicitud no permitido para eliminar la propiedad", extra_tags="error")
+        messages.error(
+            request,
+            "Método de solicitud no permitido para eliminar la propiedad",
+            extra_tags="error",
+        )
         return redirect("administracion")
