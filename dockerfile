@@ -25,6 +25,3 @@ COPY ./ ./
 
 # Exponer el puerto en el que correrá la aplicación
 EXPOSE 8000
-
-# Ejecutar ambos comandos en paralelo
-CMD ["sh", "-c", "npm run dev & python manage.py runserver 0.0.0.0:8000"]
