@@ -1,0 +1,39 @@
+networks:
+  bienes_raices_network:
+    name: bienes_raices_network
+    driver: bridge
+
+services:
+  db:
+    image: postgres:latest
+    container_name: postgres_db
+    environment:
+      POSTGRES_DB: bienes_raices
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: vTcbN.sPMX$9
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./bienes_raices.sql:/docker-entrypoint-initdb.d/bienes_raices.sql
+    networks:
+      - bienes_raices_network
+
+  web:
+    build:
+      context: .
+      dockerfile: dockerfile
+    image: bienes_raices_django:latest
+    container_name: django_web
+    command: sh -c "npm run dev & python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/usr/app/
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    networks:
+      - bienes_raices_network
+
+volumes:
+  postgres_data:

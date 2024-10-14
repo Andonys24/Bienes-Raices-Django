@@ -95,11 +95,10 @@ DATABASES = {
         "NAME": "bienes_raices",
         "USER": "postgres",
         "PASSWORD": "vTcbN.sPMX$9",
-        "HOST": "localhost",
+        "HOST": "db",  # Asegúrate de que 'db' sea el nombre del servicio en docker-compose.yml
         "PORT": "5432",
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
