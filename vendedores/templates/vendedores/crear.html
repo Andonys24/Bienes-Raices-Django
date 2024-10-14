@@ -1,0 +1,13 @@
+{% extends "layout/base.html" %}
+
+{% block contenido %}
+<main class="contenedor seccion">
+    <h1>{{titulo}}</h1>
+    <a href="{% url "vendedores" %}" class="boton boton--verde">Volver</a>
+    <form action="{% url "agregar_vendedor" %}" method="post" class="formulario">
+        {% include "./formulario.html" %}
+        <input type="submit" value="Agregar Vendedor" class="boton boton--verde">
+    </form>
+</main>
+
+{% endblock contenido %}

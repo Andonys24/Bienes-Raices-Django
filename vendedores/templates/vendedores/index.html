@@ -1,0 +1,40 @@
+{% extends "layout/base.html" %}
+
+{% block contenido %}
+<main class="contenedor seccion">
+    <h1>{{titulo}}</h1>
+    
+    {% include "layouts/mensajes.html" %}
+    <a href="{% url "administracion" %}" class="boton boton--verde">Volver</a>
+    <a href="{% url "agregar_vendedor" %}" class="boton boton--verde">Agregar Vendedor</a>
+
+    <table class="propiedades">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Telefono</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vendedor in vendedores %}
+                <tr>
+                    <td>{{ vendedor.id }}</td>
+                    <td>{{ vendedor.nombre }} {{ vendedor.apellido }}</td>
+                    <td>+504 {{ vendedor.telefono }}</td>
+                    <td>
+                        <form action="{% url "eliminar_vendedor" %}" method="post" class="w-100">
+                            {% csrf_token %}
+                            <input type="hidden" name="id" value="{{ vendedor.id }}">
+                            <input type="submit" class="boton boton--rojo block" value="Eliminar"></input>
+                        </form>
+                        <a href="{% url "editar_vendedor" vendedor.id %}" class="boton boton--amarillo block">Editar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+
+{% endblock contenido %}

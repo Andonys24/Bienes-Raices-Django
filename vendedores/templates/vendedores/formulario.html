@@ -1,0 +1,8 @@
+{% csrf_token %} {% include "layouts/alertas.html" %}
+<fieldset>
+	<legend>Informacion General</legend>
+	{% for field in formulario %}
+	<label for="{{field.id_for_label}}">{{field.label}}</label>
+    {{field}}
+	{% endfor %}
+</fieldset>

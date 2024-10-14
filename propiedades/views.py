@@ -102,8 +102,7 @@ def eliminar(request):
                 extra_tags="error",
             )
         else:
-            # propiedad.delete()
-            print(f"{propiedad}")
+            propiedad.delete()
             messages.success(
                 request, "Propiedad eliminada correctamente", extra_tags="exito"
             )
