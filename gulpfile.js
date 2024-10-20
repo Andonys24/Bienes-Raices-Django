@@ -70,9 +70,10 @@ async function procesarImagenes(file, outputSubDir) {
 }
 
 export function dev() {
-    watch(paths.scss, css);
-    watch(paths.js, js);
-    watch('src/img/**/*.{png,jpg}', imagenes);
+    watch(paths.scss, { usePolling: true, interval: 3000 }, css);
+    watch(paths.js, { usePolling: true, interval: 3000 }, js);
+    watch('src/img/**/*.{png,jpg}', { usePolling: true, interval: 3000 }, imagenes);
 }
+
 
 export default series(js, css, imagenes, dev);

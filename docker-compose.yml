@@ -1,11 +1,10 @@
-version: '3.8'
-
 networks:
-    dev_network:
-        name: dev_network
+    bienes_raices_network:
+        name: bienes_raices_network
         driver: bridge
 
 services:
+# Comentar para usar la bd del host
     db:
         image: postgres:latest
         container_name: postgres_db
@@ -17,25 +16,41 @@ services:
             - "5432:5432"
         volumes:
             - postgres_data:/var/lib/postgresql/data
-            - ./bienes_raices.sql:/docker-entrypoint-initdb.d/bienes_raices.sql
+            - ./src/bienes_raices.sql:/docker-entrypoint-initdb.d/bienes_raices.sql
         networks:
-            - dev_network
+            - bienes_raices_network
 
     web:
         build:
             context: .
-            dockerfile: dockerfile
-        image: django_full_stack:v1.0
-        container_name: django_web
-        command: sh -c "npm run dev & python manage.py runserver 0.0.0.0:8000"
+            dockerfile: Dockerfile.python
+        container_name: bienes_raices_web
+        command: python manage.py runserver 0.0.0.0:8000
         volumes:
             - .:/usr/app/
         ports:
             - "8000:8000"
+        # Comentar para usar la bd del host
         depends_on:
             - db
         networks:
-            - dev_network
+            - bienes_raices_network
 
+    gulp:
+        build:
+            context: .
+            dockerfile: Dockerfile.node
+        container_name: gulp_container
+        command: npm run dev
+        volumes:
+            - ./src:/usr/app/src
+            - ./bienes_raices/static:/usr/app/bienes_raices/static
+            - ./gulpfile.js:/usr/app/gulpfile.js
+        depends_on:
+            - web
+        networks:
+            - bienes_raices_network
+
+# Comentar si se usa la bd del host
 volumes:
     postgres_data:
